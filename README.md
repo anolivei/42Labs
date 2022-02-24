@@ -18,9 +18,9 @@
 
 ## About ##
 
-[Planejamento do Projeto](https://tree.taiga.io/project/anolivei-42-labs/timeline)
+[Project Planning](https://tree.taiga.io/project/anolivei-42-labs/timeline)
 
-[Notion com links importantes](https://www.notion.so/42-Labs-69ad2915d4f44ec1825bad69779d696b)
+[Notion with important links](https://www.notion.so/42-Labs-69ad2915d4f44ec1825bad69779d696b)
 
 ## Features ##
 
@@ -36,7 +36,7 @@ The following tools were used in this project:
 
 ## Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Docker](https://docs.docker.com/engine/install/) installed.
+Before starting, you need to have [Git](https://git-scm.com) and [Docker](https://docs.docker.com/engine/install/) installed.
 
 ## Starting ##
 
