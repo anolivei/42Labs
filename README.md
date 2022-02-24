@@ -1,7 +1,7 @@
 <h1 align="center">42 Labs Selection Process</h1>
 
 <p align="center">
-
+   <img alt="Norminette" src="https://github.com/42sp/42labs-selection-process-v2-anolivei/actions/workflows/norminette.yml/badge.svg?event=push">
 </p>
 
 
