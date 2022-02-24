@@ -6,19 +6,19 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 12:47:10 by anolivei          #+#    #+#              #
-#    Updated: 2022/02/24 12:47:11 by anolivei         ###   ########.fr        #
+#    Updated: 2022/02/24 16:57:11 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = labs_api
 
-LIBS=/usr/lib/
+LIBS = /usr/lib/
 
-SRCS = api.c
+SRCS = main.c ulfius.c curl.c ft_strjoin.c
 
 OBJS = $(SRCS:.c=.o)
 
-#FLAGS = -Wall -Wextra -Werror
+# FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
@@ -30,6 +30,7 @@ $(NAME): $(OBJS)
 
 clean:
 	@rm -rf $(OBJS)
+	@rm word.txt
 
 fclean: clean
 	@rm -rf $(NAME)
