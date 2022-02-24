@@ -1,62 +1,58 @@
-# Processo Seletivo 42 São Paulo: 42Labs 2ª edição
+<h1 align="center">42 Labs Selection Process</h1>
 
-Nesse desafio você vai construir duas aplicações utilizando C: uma [API](#) e
-uma aplicação de interface de linha de comando([CLI](#)).
+<p align="center">
 
-## API
+</p>
 
-![Cliente e API REST se comunicando por Requests e
-Responses](./img/01_client_api.png)
 
-A API que você irá construir poderá lidar com dados com formato e origem de sua
-escolha. Um exemplo seria fazer uma API que retorna o conteúdo de postagens de
-um blog.
+<p align="center">
+  <a href="#about">About</a> &#xa0; | &#xa0; 
+  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
+  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#requirements">Requirements</a> &#xa0; | &#xa0;
+  <a href="#starting">Starting</a> &#xa0; | &#xa0;
+  <a href="https://github.com/anolivei" target="_blank">Author</a>
+</p>
 
-É necessário:
+<br>
 
-- Que sua API esteja de acordo com o modelo de arquitetura _REST_
-- Implementar pelo menos uma requisição do método `GET` no path `/`, retornando
-  alguma informação no formato JSON e status HTTP `200 OK`
-- Registrar logs em um arquivo; guardando informações sobre todas as requisições
-  e respostas(e.g. horário da requisição, método, etc.)
-  
-## Aplicação CLI
+## About ##
 
-![Exemplo CLI](./img/02_cli_example.png)
+todo
 
-A aplicação CLI que você irá construir deverá consumir e processar o arquivo de
-logs gerado pela API REST. 
+[Notion](https://www.notion.so/42-Labs-69ad2915d4f44ec1825bad69779d696b)
 
-É necessário:
+## Features ##
 
-- Que sua aplicação agrupe os dados dos logs e os mostrem de maneira legível no terminal
-- Que os dados possibilitem uma análise sobre as requisições
+todo
 
-## O que será avaliado
+## Technologies ##
 
-- Código bem escrito e limpo
-- A documentação do seu código
-- Quais ferramentas foram usadas e por quê
-- Sua criatividade e capacidade de lidar com problemas diferentes
-- Se seu projeto está alinhado com o que foi proposto
+The following tools were used in this project:
 
-## O mínimo necessário
+- [Curl](https://curl.se/libcurl/)
+- [Ulfius](https://babelouest.github.io/ulfius/)
+- [Docker](https://www.docker.com/)
 
-- README.md com documentação contendo informações do projeto.
+## Requirements ##
 
-## Bônus
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Docker](https://docs.docker.com/engine/install/) installed.
 
-Os seguintes itens não são obrigatórios, porém dão mais valor ao seu trabalho.
-Os destacados são mais significativos para nós.
+## Starting ##
 
-- **Testes**
-- **Conteinerização das aplicações**
-- **API com conexão a um banco de dados(SQL ou NoSQL, sua escolha)**
-- **Parseamento de argumentos UNIX-like, podendo filtrar ou alterar comportamentos da aplicação(CLI)**
-- Cache básico(caso sua API se comunique com banco de dados)
-- Autenticação e autorização(API)
-- Lidar com requests simultâneos(API)
-- Cuidados especiais com otimização, padrões, entre outros
-- Pipelines de CI/CD
-- Utilização de algum serviço de computação na nuvem
-- Uso de ferramentas externas para diagramação e/ou planejamento das etapas de desenvolvimento
+```bash
+# Clone this project
+$ git clone https://github.com/42sp/42labs-selection-process-v2-anolivei
+
+# Access
+$ cd 42labs-selection-process-v2-anolivei
+
+# Run the project
+$ bash run.sh
+
+# The server will initialize in the <http://localhost:8080>
+```
+
+&#xa0;
+
+<a href="#top">Back to top</a>
