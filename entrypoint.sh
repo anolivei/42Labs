@@ -2,4 +2,4 @@
 
 cd ./api
 make
-./api
+./labs_api

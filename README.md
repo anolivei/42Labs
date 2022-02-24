@@ -18,9 +18,9 @@
 
 ## About ##
 
-todo
+[Planejamento do Projeto](https://tree.taiga.io/project/anolivei-42-labs/timeline)
 
-[Notion](https://www.notion.so/42-Labs-69ad2915d4f44ec1825bad69779d696b)
+[Notion com links importantes](https://www.notion.so/42-Labs-69ad2915d4f44ec1825bad69779d696b)
 
 ## Features ##
 
