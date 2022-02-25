@@ -6,7 +6,7 @@
 /*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 23:40:20 by anolivei          #+#    #+#             */
-/*   Updated: 2022/02/25 00:56:39 by anolivei         ###   ########.fr       */
+/*   Updated: 2022/02/25 10:55:00 by anolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	callback_get_movie(const struct _u_request *request,
 	return (U_CALLBACK_CONTINUE);
 }
 
-int	callback_add_movie(const struct _u_request *request,
+int	callback_post_movie(const struct _u_request *request,
 	struct _u_response *response, void *user_data)
 {
 	ft_log("POST", "/", 200);
@@ -56,7 +56,7 @@ int	callback_add_movie(const struct _u_request *request,
 	return (U_CALLBACK_CONTINUE);
 }
 
-int	callback_set_movie(const struct _u_request *request,
+int	callback_put_movie(const struct _u_request *request,
 	struct _u_response *response, void *user_data)
 {
 	json_t	*j_movie;
