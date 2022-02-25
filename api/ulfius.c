@@ -6,7 +6,7 @@
 /*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 23:36:27 by anolivei          #+#    #+#             */
-/*   Updated: 2022/02/25 10:59:50 by anolivei         ###   ########.fr       */
+/*   Updated: 2022/02/25 12:20:14 by anolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ int	ft_ulfius(void)
 
 int	ft_ulfius_endpoint(struct _u_instance *instance, json_t *shared_data)
 {
-	ulfius_add_endpoint_by_val(instance, "GET", "/api", "/movie/", 1,
+	ulfius_add_endpoint_by_val(instance, "GET", "/", "", 1,
 		&callback_get_movie_list, shared_data);
-	ulfius_add_endpoint_by_val(instance, "GET", "/api", "/movie/:id", 1,
+	ulfius_add_endpoint_by_val(instance, "GET", "/", "/:id", 1,
 		&callback_get_movie, shared_data);
-	ulfius_add_endpoint_by_val(instance, "POST", "/api", "/movie/", 1,
+	ulfius_add_endpoint_by_val(instance, "POST", "/", "", 1,
 		&callback_post_movie, shared_data);
-	ulfius_add_endpoint_by_val(instance, "PUT", "/api", "/movie/:id", 1,
+	ulfius_add_endpoint_by_val(instance, "PUT", "/", "/:id", 1,
 		&callback_put_movie, shared_data);
-	ulfius_add_endpoint_by_val(instance, "DELETE", "/api", "/movie/:id", 1,
+	ulfius_add_endpoint_by_val(instance, "DELETE", "/", "/:id", 1,
 		&callback_delete_movie, shared_data);
 }
