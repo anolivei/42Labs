@@ -3,6 +3,7 @@ FROM ubuntu:latest
 ARG DEBIAN_FRONTEND=noninteractive
 
 COPY ./api/* ./api/
+COPY ./cli/* ./cli/
 COPY ./entrypoint.sh /
 
 RUN apt-get clean && \

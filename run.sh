@@ -6,4 +6,4 @@ docker build . -t labs_api
 
 echo "RUNNING"
 
-docker run -it -p 8080:8080 labs_api
+docker run --name labs_api -it -p 8080:8080 labs_api

@@ -1,1 +1,4 @@
 *.o
+labs_api
+api.log
+labs_cli

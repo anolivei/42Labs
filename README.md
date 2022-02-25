@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="#about">About</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
+  <a href="#methods">Methods</a> &#xa0; | &#xa0;
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#starting">Starting</a> &#xa0; | &#xa0;
@@ -17,21 +17,42 @@
 <br>
 
 ## About ##
+This project has two applications: a Rest API and a CLI application, 
+both written in C language.<br>
+The Rest API send, receive, change and remove movie data in format json, using 
+the methods POST, GET, PUT and DELETE, while print the logs in a file api.log
+and also in terminal.<br>
+The CLI application is a simple applicaton which reads the api.log file and
+prints a resume of this logs.
 
-This is a Rest API written in C to send, receive, change and remove movie data
-in format json, using the methods POST, GET, PUT and DELETE.
 
 [Project Planning](https://tree.taiga.io/project/anolivei-42-labs/timeline)
 
 [Notion with important links](https://www.notion.so/42-Labs-69ad2915d4f44ec1825bad69779d696b)
 
-## Features ##
+## Methods ##
+- POST:
 
-json example to POST:
+  localhost:8080/ - add a new movie
 
+- GET:
+
+  localhost:8080/ - lists all movies
+
+  localhost:8080/:id - lists a specifc movie
+
+- PUT:
+
+  localhost:8080/:id - modify an existing movie
+
+- DELETE:
+
+  localhost:8080/:id - delete an existing movie
+
+A movie is a JSON object with the following model:
 ```json
 {
-  "ID": "1",
+  "id": "1",
   "title": "Back to the Future",
   "genre": "Sci-fi",
   "year": "1985"
@@ -47,23 +68,44 @@ The following tools were used in this project:
 
 ## Requirements ##
 
-Before starting, you need to have [Git](https://git-scm.com) and [Docker](https://docs.docker.com/engine/install/) installed.
+Before starting, you need to have [Git](https://git-scm.com) and 
+[Docker](https://docs.docker.com/engine/install/) installed.
 
 ## Starting ##
 
+Rest API:
+
 ```bash
 # Clone this project
-$ git clone https://github.com/42sp/42labs-selection-process-v2-anolivei
+git clone https://github.com/42sp/42labs-selection-process-v2-anolivei
 
 # Access
-$ cd 42labs-selection-process-v2-anolivei
+cd 42labs-selection-process-v2-anolivei
 
 # Run the project
-$ bash run.sh
+bash run.sh
 
 # The server will initialize in the <http://localhost:8080>
-```
 
+# To stop the server press enter
+
+# To remove the container
+docker rm labs_api
+
+# To remove the images
+docker rmi labs_api ubuntu
+```
+CLI Application:
+```bash
+# open a new terminal and execute
+docker exec -it labs_api /bin/bash
+
+# Access
+cd cli
+
+# Compile and run
+make run
+```
 &#xa0;
 
 <a href="#top">Back to top</a>

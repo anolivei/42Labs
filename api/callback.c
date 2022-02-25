@@ -6,7 +6,7 @@
 /*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 23:40:20 by anolivei          #+#    #+#             */
-/*   Updated: 2022/02/25 10:55:00 by anolivei         ###   ########.fr       */
+/*   Updated: 2022/02/25 13:31:23 by anolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	callback_get_movie(const struct _u_request *request,
 	json_array_foreach((json_t *)user_data, index, j_movie)
 	{
 		if (0 == o_strcmp(u_map_get(request->map_url, "id"),
-			json_string_value(json_object_get(j_movie, "ID"))))
+			json_string_value(json_object_get(j_movie, "id"))))
 		{
 			ulfius_set_json_body_response(response, 200, j_movie);
 			found = 1;
@@ -69,7 +69,7 @@ int	callback_put_movie(const struct _u_request *request,
 	json_array_foreach((json_t *)user_data, index, j_movie)
 	{
 		if (0 == o_strcmp(u_map_get(request->map_url, "id"),
-			json_string_value(json_object_get(j_movie, "ID"))))
+			json_string_value(json_object_get(j_movie, "id"))))
 		{
 			json_array_set((json_t *)user_data, index, j_body);
 			found = 1;
@@ -96,7 +96,7 @@ int callback_delete_movie(const struct _u_request *request,
 	json_array_foreach((json_t *)user_data, index, j_movie)
 	{
 		if (0 == o_strcmp(u_map_get(request->map_url, "id"),
-			json_string_value(json_object_get(j_movie, "ID"))))
+			json_string_value(json_object_get(j_movie, "id"))))
 		{
 			json_array_remove((json_t *)user_data, index);
 			found = 1;
