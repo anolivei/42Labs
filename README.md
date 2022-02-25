@@ -18,19 +18,30 @@
 
 ## About ##
 
+This is a Rest API written in C to send, receive, change and remove movie data
+in format json, using the methods POST, GET, PUT and DELETE.
+
 [Project Planning](https://tree.taiga.io/project/anolivei-42-labs/timeline)
 
 [Notion with important links](https://www.notion.so/42-Labs-69ad2915d4f44ec1825bad69779d696b)
 
 ## Features ##
 
-todo
+json example to POST:
+
+```json
+{
+  "ID": "2",
+  "title": "Back to the Future",
+  "genre": "Sci-fi",
+  "year": "1985"
+}
+```
 
 ## Technologies ##
 
 The following tools were used in this project:
 
-- [Curl](https://curl.se/libcurl/)
 - [Ulfius](https://babelouest.github.io/ulfius/)
 - [Docker](https://www.docker.com/)
 

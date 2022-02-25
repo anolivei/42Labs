@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   logs.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 14:47:04 by anolivei          #+#    #+#             */
-/*   Updated: 2022/02/24 16:35:06 by anolivei         ###   ########.fr       */
+/*   Created: 2022/02/24 23:20:31 by anolivei          #+#    #+#             */
+/*   Updated: 2022/02/25 00:07:11 by anolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "api.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+void	ft_log(char *method, char *path, int status)
 {
-	char		*string;
-	size_t		i;
-	size_t		j;
+	time_t		t;
+	struct tm	ttm;
 
-	if (s1 == 0 || s2 == 0)
-		return (0);
-	i = 0;
-	string = malloc((strlen(s1) + strlen(s2) + 1) * sizeof(char));
-	if (string == 0)
-		return (0);
-	while (s1[i] != '\0')
-	{
-		string[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j] != '\0')
-	{
-		string[i] = s2[j];
-		i++;
-		j++;
-	}
-	string[i] = '\0';
-	return (string);
+	t = time(NULL);
+	ttm = *localtime(&t);
+	printf("[%02d-%02d-%02d_%02d:%02d:%02d] %s %s %d\n",
+		ttm.tm_year + 1900, ttm.tm_mon + 1, ttm.tm_mday,
+		ttm.tm_hour, ttm.tm_min, ttm.tm_sec,
+		method, path, status);
 }
