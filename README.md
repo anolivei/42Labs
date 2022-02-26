@@ -1,4 +1,10 @@
-<h1 align="center">42 Labs Selection Process</h1>
+<h1 align="center">
+  <img src="https://cdn-icons-png.flaticon.com/512/747/747131.png" alt="lab" width="150" height="150">
+</h1>
+
+<h1 align="center">
+  42 Labs Selection Process
+</h1>
 
 <p align="center">
    <img alt="Norminette" src="https://github.com/42sp/42labs-selection-process-v2-anolivei/actions/workflows/norminette.yml/badge.svg?event=push">
@@ -8,7 +14,7 @@
 <p align="center">
   <a href="#about">About</a> &#xa0; | &#xa0; 
   <a href="#methods">Methods</a> &#xa0; | &#xa0;
-  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#starting">Starting</a> &#xa0; | &#xa0;
   <a href="https://github.com/anolivei" target="_blank">Author</a>

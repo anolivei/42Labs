@@ -6,14 +6,14 @@
 /*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 13:06:47 by anolivei          #+#    #+#             */
-/*   Updated: 2022/02/26 14:45:47 by anolivei         ###   ########.fr       */
+/*   Updated: 2022/02/26 16:41:22 by anolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLI_H
 # define CLI_H
 
-# define MAX_LINE_LENGTH 40
+# define MAX_LINE_LENGTH 1000
 # define LOG_PATH "../api/api.log"
 
 # include <stdio.h>
