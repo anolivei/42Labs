@@ -64,6 +64,7 @@ A movie is a JSON object with the following model:
 The following tools were used in this project:
 
 - [Ulfius](https://babelouest.github.io/ulfius/)
+- [Jansson](https://jansson.readthedocs.io/en/2.5/index.html)
 - [Docker](https://www.docker.com/)
 
 ## Requirements ##
