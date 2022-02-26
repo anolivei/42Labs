@@ -6,7 +6,7 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 12:47:10 by anolivei          #+#    #+#              #
-#    Updated: 2022/02/24 23:55:20 by anolivei         ###   ########.fr        #
+#    Updated: 2022/02/26 15:51:44 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS = main.c ulfius.c callback.c logs.c
 
 OBJS = $(SRCS:.c=.o)
 
-# FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 all: $(NAME)
 

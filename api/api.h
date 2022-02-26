@@ -6,7 +6,7 @@
 /*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 13:06:47 by anolivei          #+#    #+#             */
-/*   Updated: 2022/02/25 11:06:25 by anolivei         ###   ########.fr       */
+/*   Updated: 2022/02/26 15:35:31 by anolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ void	ft_log(char *method, char *path, int status);
 ** ulfius.c
 */
 int		ft_ulfius(void);
-int		ft_ulfius_endpoint(struct _u_instance *instance, json_t *shared_data);
+void	ft_ulfius_endpoint(struct _u_instance *instance, json_t *shared_data);
 
 #endif
