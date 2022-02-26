@@ -6,7 +6,7 @@
 /*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:52:26 by anolivei          #+#    #+#             */
-/*   Updated: 2022/02/25 17:05:23 by anolivei         ###   ########.fr       */
+/*   Updated: 2022/02/26 00:24:05 by anolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ int	ft_count_lines(void)
 		exit(1);
 	}
 	while (fgets(line, MAX_LINE_LENGTH, file))
-		num_lines++;
+	{
+		if (strlen(line) > 0)
+			num_lines++;
+	}
 	return (num_lines);
 }

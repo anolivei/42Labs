@@ -6,7 +6,7 @@
 #    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 12:47:10 by anolivei          #+#    #+#              #
-#    Updated: 2022/02/25 14:48:44 by anolivei         ###   ########.fr        #
+#    Updated: 2022/02/25 23:25:53 by anolivei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS = main.c ft_split.c ft_count_lines.c
 
 OBJS = $(SRCS:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 all: $(NAME)
 
