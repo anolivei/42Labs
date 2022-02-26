@@ -6,7 +6,7 @@
 /*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 23:40:20 by anolivei          #+#    #+#             */
-/*   Updated: 2022/02/26 15:36:47 by anolivei         ###   ########.fr       */
+/*   Updated: 2022/02/26 16:36:49 by anolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 int	callback_get_movie_list(const struct _u_request *request,
 	struct _u_response *response, void *user_data)
 {
-	(void)request;
 	ulfius_set_json_body_response(response, 200, (json_t *)user_data);
-	ft_log("GET", "/", 200);
+	ft_log(request->http_verb, request->http_url, response->status);
 	return (U_CALLBACK_CONTINUE);
 }
 
@@ -44,7 +43,7 @@ int	callback_get_movie(const struct _u_request *request,
 	}
 	if (!found)
 		response->status = 404;
-	ft_log("GET", "/:id", response->status);
+	ft_log(request->http_verb, request->http_url, response->status);
 	return (U_CALLBACK_CONTINUE);
 }
 
@@ -53,11 +52,10 @@ int	callback_post_movie(const struct _u_request *request,
 {
 	json_t	*j_movie;
 
-	(void)response;
 	j_movie = ulfius_get_json_body_request(request, NULL);
 	json_array_append((json_t *)user_data, j_movie);
 	json_decref(j_movie);
-	ft_log("POST", "/", 200);
+	ft_log(request->http_verb, request->http_url, response->status);
 	return (U_CALLBACK_CONTINUE);
 }
 
@@ -86,7 +84,7 @@ int	callback_put_movie(const struct _u_request *request,
 	}
 	if (!found)
 		response->status = 404;
-	ft_log("PUT", "/:id", response->status);
+	ft_log(request->http_verb, request->http_url, response->status);
 	json_decref(j_body);
 	return (U_CALLBACK_CONTINUE);
 }
@@ -114,6 +112,6 @@ int	callback_delete_movie(const struct _u_request *request,
 	}
 	if (!found)
 		response->status = 404;
-	ft_log("DELETE", "/:id", response->status);
+	ft_log(request->http_verb, request->http_url, response->status);
 	return (U_CALLBACK_CONTINUE);
 }

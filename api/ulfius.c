@@ -6,7 +6,7 @@
 /*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 23:36:27 by anolivei          #+#    #+#             */
-/*   Updated: 2022/02/26 15:35:20 by anolivei         ###   ########.fr       */
+/*   Updated: 2022/02/26 16:36:25 by anolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ft_ulfius(void)
 
 void	ft_ulfius_endpoint(struct _u_instance *instance, json_t *shared_data)
 {
+	ulfius_set_default_endpoint(instance,
+		&callback_dfault, shared_data);
 	ulfius_add_endpoint_by_val(instance, "GET", "/", "", 1,
 		&callback_get_movie_list, shared_data);
 	ulfius_add_endpoint_by_val(instance, "GET", "/", "/:id", 1,
@@ -50,4 +52,12 @@ void	ft_ulfius_endpoint(struct _u_instance *instance, json_t *shared_data)
 		&callback_put_movie, shared_data);
 	ulfius_add_endpoint_by_val(instance, "DELETE", "/", "/:id", 1,
 		&callback_delete_movie, shared_data);
+}
+
+int	callback_dfault(const struct _u_request *request,
+	struct _u_response *response, void *user_data)
+{
+	(void)user_data;
+	ft_log(request->http_verb, request->http_url, response->status);
+	return (U_CALLBACK_CONTINUE);
 }
