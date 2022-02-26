@@ -6,21 +6,11 @@
 /*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:46:51 by anolivei          #+#    #+#             */
-/*   Updated: 2022/02/26 01:19:58 by anolivei         ###   ########.fr       */
+/*   Updated: 2022/02/26 14:44:28 by anolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cli.h"
-
-void	free_array(void **array)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (array[i])
-		free(array[i++]);
-	free(array);
-}
 
 void	print_logs(int *total_requests, char **lines)
 {
@@ -48,64 +38,58 @@ void	print_logs(int *total_requests, char **lines)
 	printf("-------------------------------------------------------------\n");
 }
 
-int	main(void)
+void	calculate_resume(t_cli *cli)
 {
-	char	line[MAX_LINE_LENGTH];
-	char	**lines;
-	int		num_lines;
-	int		i;
-	int		j;
-	int		*total_requests;
-	FILE	*file;
+	int	i;
+	int	j;
 
-	num_lines = ft_count_lines();
-	lines = (char **)malloc((num_lines + 1) * sizeof(char *));
-	total_requests = malloc((num_lines + 1) * sizeof(int));
 	i = 0;
-	while (i < num_lines)
+	while (i < cli->num_lines - 1)
 	{
-		total_requests[i] = 0;
-		i++;
-	}
-	file = fopen(LOG_PATH, "r");
-	if (file == NULL)
-	{
-		perror("open failed");
-		exit(1);
-	}
-	i = 0;
-	while (fgets(line, MAX_LINE_LENGTH, file))
-	{
-		lines[i] = strdup(&line[21]);
-		i++;
-	}
-	i = 0;
-	while (i < num_lines - 1)
-	{
-		while (lines[i] == NULL)
+		while (cli->lines[i] == NULL)
 			i++;
-		total_requests[i] = 1;
+		cli->total_requests[i] = 1;
 		j = i + 1;
-		while (j < num_lines)
+		while (j < cli->num_lines)
 		{
-			if (lines[j] != NULL && strcmp(lines[i], lines[j]) == 0)
+			if (cli->lines[j] != NULL
+				&& strcmp(cli->lines[i], cli->lines[j]) == 0)
 			{
-				free(lines[j]);
-				lines[j] = strdup("0");
-				total_requests[i]++;
+				free(cli->lines[j]);
+				cli->lines[j] = strdup("0");
+				cli->total_requests[i]++;
 			}
 			j++;
 		}
 		i++;
 	}
-	print_logs(total_requests, lines);
+}
+
+int	main(void)
+{
+	t_cli	cli;
+	FILE	*file;
+	char	line[MAX_LINE_LENGTH];
+	int		i;
+
+	cli.num_lines = count_lines();
+	cli.lines = (char **)malloc((cli.num_lines + 1) * sizeof(char *));
+	cli.total_requests = malloc((cli.num_lines + 1) * sizeof(int));
 	i = 0;
-	while (i < num_lines)
+	while (i < cli.num_lines)
 	{
-		free(lines[i]);
+		cli.total_requests[i] = 0;
 		i++;
 	}
-	free(lines);
-	free(total_requests);
+	file = open_file();
+	i = 0;
+	while (fgets(line, MAX_LINE_LENGTH, file))
+	{
+		cli.lines[i] = strdup(&line[21]);
+		i++;
+	}
+	calculate_resume(&cli);
+	print_logs(cli.total_requests, cli.lines);
+	free_cli((void *)cli.lines, (void *)cli.total_requests, cli.num_lines);
 	return (0);
 }

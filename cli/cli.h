@@ -6,7 +6,7 @@
 /*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 13:06:47 by anolivei          #+#    #+#             */
-/*   Updated: 2022/02/25 17:21:13 by anolivei         ###   ########.fr       */
+/*   Updated: 2022/02/26 14:45:47 by anolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 # include <stdlib.h>
 # include <string.h>
 
+typedef struct s_cli
+{
+	int		num_lines;
+	int		*total_requests;
+	char	**lines;
+}			t_cli;
+
 /*
 ** ft_split.c
 */
@@ -28,8 +35,11 @@ int		count_words(const char *s, char c);
 char	*string(const char *s, int init, int end);
 
 /*
-** ft_count_lines.c
+** utils.c
 */
-int		ft_count_lines(void);
+int		count_lines(void);
+FILE	*open_file(void);
+void	free_array(void **array);
+void	free_cli(void **lines, void **total_requests, int num_lines);
 
 #endif
