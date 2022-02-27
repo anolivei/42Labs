@@ -6,7 +6,7 @@
 /*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:52:26 by anolivei          #+#    #+#             */
-/*   Updated: 2022/02/26 14:46:21 by anolivei         ###   ########.fr       */
+/*   Updated: 2022/02/27 00:50:47 by anolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,16 @@ void	free_array(void **array)
 	free(array);
 }
 
-void	free_cli(void **lines, void **total_requests, int num_lines)
+void	free_cli(t_cli *cli)
 {
 	int	i;
 
 	i = 0;
-	while (i < num_lines)
+	while (i < cli->num_lines)
 	{
-		free(lines[i]);
+		free(cli->lines[i]);
 		i++;
 	}
-	free(lines);
-	free(total_requests);
+	free(cli->lines);
+	free(cli->total_requests);
 }

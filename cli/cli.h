@@ -6,7 +6,7 @@
 /*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 13:06:47 by anolivei          #+#    #+#             */
-/*   Updated: 2022/02/26 16:41:22 by anolivei         ###   ########.fr       */
+/*   Updated: 2022/02/27 01:13:44 by anolivei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,19 @@ int		count_words(const char *s, char c);
 char	*string(const char *s, int init, int end);
 
 /*
+** main.c
+*/
+void	parse_line(int total_requests, char **lines, int i);
+void	print_logs(t_cli *cli);
+void	calculate_resume(t_cli *cli);
+int		main(void);
+
+/*
 ** utils.c
 */
 int		count_lines(void);
 FILE	*open_file(void);
 void	free_array(void **array);
-void	free_cli(void **lines, void **total_requests, int num_lines);
+void	free_cli(t_cli *cli);
 
 #endif

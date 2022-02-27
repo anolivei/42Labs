@@ -1,5 +1,9 @@
 #! /bin/bash
 
+echo "REMOVING OLD CONTAINER"
+
+docker rm labs_api
+
 echo "BUILDING"
 
 docker build . -t labs_api
