@@ -31,6 +31,8 @@ and also in terminal.<br>
 The CLI application is a simple applicaton which reads the api.log file and
 prints a resume of this logs.
 
+It's running on [DigitalOcean](https://www.digitalocean.com/) cloud: http://162.243.163.141:8080/ 
+
 
 [Project Planning](https://tree.taiga.io/project/anolivei-42-labs/timeline)
 
