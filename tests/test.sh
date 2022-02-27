@@ -1,95 +1,101 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    test.sh                                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/02/27 14:51:31 by anolivei          #+#    #+#              #
+#    Updated: 2022/02/27 16:34:31 by anolivei         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 #!/bin/bash
 
-rm ../api/api.log
+GREEN="\033[32m"
+YELLOW="\033[0;33m"
+RED="\033[0;31m"
+BLUE="\033[0;34m"
+MUTED="\033[1;30m"
+RESET="\033[0m"
+BOLD="\033[1m"
+
+if [ -f ../api/api.log ]; then
+    rm ../api/api.log
+fi
 
 mkdir diffs
 
-echo "Testing the log file..."
+check_log()
+{
+    cat $2 | cut -c 23-  > sample
+    cat $3 | cut -c 23-  > log
+    diff sample log > diff
+    x=$(wc -c < diff)
+    if [[ "$x" == *"0"* ]]; then
+        echo -e ${GREEN}"[OK] "$1${RESET}
+    else
+        echo -e ${RED}"[KO] "$1${RESET}
+    fi
+}
 
-curl -X POST -H "Content-Type: application/json" -d \
-    '{"id":"1","name":"lalala","genre":"tiro","year":"2005"}' "localhost:8080/"; 
-cat logs/POST.log | cut -c 23-  > sample
-cat ../api/api.log | cut -c 23-  > log
-diff sample log > diff
-x=$(wc -c < diff)
-if [[ "$x" == *"0"* ]]; then
-    echo "POST Test - OK"
-else
-    echo "POST Test - Fail"
-fi
+check_api()
+{
+    diff $2 $3 > diff
+    x=$(wc -c < diff)
+    if [[ "$x" == *"0"* ]]; then
+        echo -e ${GREEN}"[OK] "$1${RESET}
+    else
+        echo -e ${RED}"[KO] "$1${RESET}
+    fi
+}
 
-curl --silent --output diffs/teste1.log -X GET -H "Content-Type: application/json" -d \
-    '{}' "localhost:8080/1"
-cat logs/POST_GET.log | cut -c 23-  > sample
-cat ../api/api.log | cut -c 23-  > log
-diff sample log > diffs/diff
-x=$(wc -c < diffs/diff)
-if [[ "$x" == *"0"* ]]; then
-    echo "POST GET - OK"
-else
-    echo "POST GET - Fail"
-fi
+curl --silent --output diffs/teste1.log -X POST -H "Content-Type: application/json" -d \
+    '{"id":"1","name":"movie1","genre":"Sci-fi","year":"2001"}' "localhost:8080/"; 
+check_log "POST log" logs/log_post.log ../api/api.log
+check_api "POST api" logs/post.log diffs/teste1.log
 
-echo "Testing json objects content..."
-
-diff diffs/teste1.log logs/get1.log > diffs/diff1
-x=$(wc -c < diffs/diff1)
-if [[ "$x" == "0" ]]; then
-    echo "GET1 - OK"
-else
-    echo "GET1 - Fail"
-fi
-
-curl -X POST -H "Content-Type: application/json" -d \
-    '{"id":"2","name":"movie2","genre":"action","year":"2002"}' "localhost:8080/";
-curl -X POST -H "Content-Type: application/json" -d \
-    '{"id":"3","name":"movie3","genre":"action","year":"2003"}' "localhost:8080/"; 
-curl -X POST -H "Content-Type: application/json" -d \
-    '{"id":"4","name":"movie4","genre":"action","year":"2004"}' "localhost:8080/"; 
 curl --silent --output diffs/teste2.log -X GET -H "Content-Type: application/json" -d \
-    '{}' "localhost:8080/"
+    '{}' "localhost:8080/1"
+check_log "GET log" logs/log_get.log ../api/api.log
+check_api "GET api" logs/json_test1.log diffs/teste2.log
 
-diff diffs/teste2.log logs/get2.log > diffs/diff2
-x=$(wc -c < diffs/diff2)
-if [[ "$x" == "0" ]]; then
-    echo "GET2 - OK"
-else
-    echo "GET2 - Fail"
-fi
-
+curl --silent --output diffs/teste3.log -X POST -H "Content-Type: application/json" -d \
+    '{"id":"2","name":"movie2","genre":"Sci-fi","year":"2002"}' "localhost:8080/";
+curl --silent --output diffs/teste3.log -X POST -H "Content-Type: application/json" -d \
+    '{"id":"3","name":"movie3","genre":"Sci-fi","year":"2003"}' "localhost:8080/"; 
+curl --silent --output diffs/teste3.log -X POST -H "Content-Type: application/json" -d \
+    '{"id":"4","name":"movie4","genre":"Sci-fi","year":"2004"}' "localhost:8080/"; 
 curl --silent --output diffs/teste3.log -X GET -H "Content-Type: application/json" -d \
-    '{}' "localhost:8080/1" 
-diff diffs/teste3.log logs/get3.log > diffs/diff3
-x=$(wc -c < diffs/diff3)
-if [[ "$x" == "0" ]]; then
-    echo "GET3 - OK"
-else
-    echo "GET3 - Fail"
-fi
+    '{}' "localhost:8080/"
+check_log "POST 3 times log" logs/log_post3.log ../api/api.log
+check_api "GET after post 3 times api" logs/json_test2.log diffs/teste3.log
 
-curl --silent --output diffs/teste3.log -X DELETE -H "Content-Type: application/json" -d \
-    '{}' "localhost:8080/1" 
 curl --silent --output diffs/teste4.log -X GET -H "Content-Type: application/json" -d \
-    '{}' "localhost:8080/" 
-diff diffs/teste4.log logs/get4.log > diffs/diff4
-x=$(wc -c < diffs/diff4)
-if [[ "$x" == "0" ]]; then
-    echo "GET4 - OK"
-else
-    echo "GET4 - Fail"
-fi
-
-curl --silent --output diffs/teste5.log -X GET -H "Content-Type: application/json" -d \
     '{}' "localhost:8080/1" 
-diff diffs/teste5.log logs/get5.log > diffs/diff5
-x=$(wc -c < diffs/diff5)
-if [[ "$x" == "0" ]]; then
-    echo "GET5 - OK"
-else
-    echo "GET5 - Fail"
-fi
+check_api "GET id 1 api" logs/json_test3.log diffs/teste4.log
 
+curl --silent --output diffs/teste5.log -X DELETE -H "Content-Type: application/json" -d \
+    '{}' "localhost:8080/1" 
+check_api "DELETE id 1 api" logs/delete.log diffs/teste5.log
+
+curl --silent --output diffs/teste6.log -X GET -H "Content-Type: application/json" -d \
+    '{}' "localhost:8080/" 
+check_api "GET after delete id 1 api" logs/json_test4.log diffs/teste6.log
+
+curl --silent --output diffs/teste7.log -X GET -H "Content-Type: application/json" -d \
+    '{}' "localhost:8080/1" 
+check_api "Not found GET id 1 api" logs/not_found.log diffs/teste7.log
+
+curl --silent --output diffs/teste8.log -X PUT -H "Content-Type: application/json" -d \
+    '{"id":"2","name":"movie2_put","genre":"Sci-fi","year":"2002"}' "localhost:8080/2";
+check_api "PUT id 2 api" logs/put.log diffs/teste8.log
+
+curl --silent --output diffs/teste9.log -X GET -H "Content-Type: application/json" -d \
+    '{}' "localhost:8080/" 
+check_api "GET after put api" logs/json_test6.log diffs/teste9.log
+
+# Remove test files
 rm -rf diffs
 rm diff
 rm log
