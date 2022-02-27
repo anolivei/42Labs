@@ -17,6 +17,7 @@
   <a href="#technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#testing">Testing</a> &#xa0; | &#xa0;
   <a href="https://github.com/anolivei" target="_blank">Author</a>
 </p>
 
@@ -106,7 +107,7 @@ docker rmi labs_api ubuntu
 ```
 CLI Application:
 ```bash
-# open a new terminal and execute
+# Open a new terminal and execute
 docker exec -it labs_api /bin/bash
 
 # Access
@@ -115,6 +116,18 @@ cd cli
 # Compile and run
 make run
 ```
+## Testing ##
+```bash
+# Open a new terminal and execute
+docker exec -it labs_api /bin/bash
+
+# Access
+cd tests
+
+# Run
+bash test.sh
+```
+
 &#xa0;
 
 <a href="#top">Back to top</a>
