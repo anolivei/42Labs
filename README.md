@@ -28,7 +28,7 @@ This project has two applications: a Rest API and a CLI application,
 both written in C language.<br>
 The Rest API send, receive, change and remove movie data in format json, using 
 the methods POST, GET, PUT and DELETE, while print the logs in a file api.log
-and also in terminal.<br>
+and also on terminal.<br>
 The CLI application is a simple applicaton which reads the api.log file and
 prints a resume of this logs.
 
@@ -117,6 +117,7 @@ cd cli
 make run
 ```
 ## Testing ##
+Rest API:
 ```bash
 # Open a new terminal and execute
 docker exec -it labs_api /bin/bash
